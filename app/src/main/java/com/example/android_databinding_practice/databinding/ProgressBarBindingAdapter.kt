@@ -6,6 +6,7 @@ import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
 import com.example.android_databinding_practice.data.Popular
 import com.example.android_databinding_practice.extension.getColor
+import com.example.android_databinding_practice.util.Constant
 
 object ProgressBarBindingAdapter {
 
@@ -19,7 +20,8 @@ object ProgressBarBindingAdapter {
     @BindingAdapter(value = ["progress", "android:max"])
     @JvmStatic
     fun setProgress(progressBar: ProgressBar, progress: Int, maxProgress: Int) {
-        progressBar.progress = (progress * maxProgress / 5).coerceAtMost(maxProgress)
+        progressBar.progress =
+            (progress * maxProgress / Constant.POPULAR_STEP).coerceAtMost(maxProgress)
     }
 
     @BindingAdapter("hideIfZero")
