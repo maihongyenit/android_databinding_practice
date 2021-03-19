@@ -1,22 +1,29 @@
 package com.example.android_databinding_practice.ui
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.example.android_databinding_practice.R
 import com.example.android_databinding_practice.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by viewModels()
+    @Inject
+    lateinit var fragmentFactory: MainActivityFragmentFactory
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.viewModel = viewModel
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        supportFragmentManager.run {
+            fragmentFactory = this@MainActivity.fragmentFactory
+            beginTransaction()
+                .replace(R.id.fragment_container, MainFragment::class.java, null)
+                .commit()
+        }
     }
 }
