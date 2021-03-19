@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.android_databinding_practice.ui.MainViewModel" />
@@ -33,12 +34,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:text="@{viewModel.name}"
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:text="@{viewModel.name}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,12 +58,12 @@
             app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <TextView
-            android:text="@{viewModel.lastName}"
             android:id="@+id/lastname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:text="@{viewModel.lastName}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +79,7 @@
             app:layout_constraintStart_toEndOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_max="96dp"
+            app:popularIcon="@{viewModel.popular}"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -94,6 +96,7 @@
             android:id="@+id/likes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{Integer.toString(viewModel.likes)}"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -101,11 +104,11 @@
             tools:text="1" />
 
         <Button
-            android:onClick="@{(v) -> viewModel.onLike(v)}"
             android:id="@+id/like_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:onClick="@{(v) -> viewModel.onLike(v)}"
             android:text="Like"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -118,9 +121,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:max="@{100}"
+            app:hideIfZero="@{viewModel.likes}"
             app:layout_constraintEnd_toEndOf="@+id/like_button"
             app:layout_constraintStart_toStartOf="@+id/like_button"
             app:layout_constraintTop_toBottomOf="@+id/like_button"
+            app:progress="@{viewModel.likes}"
+            app:progressTint="@{viewModel.popular}"
             tools:progressBackgroundTint="@android:color/darker_gray" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
