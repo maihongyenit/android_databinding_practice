@@ -14,7 +14,7 @@ class MainViewModel @Inject constructor() : ViewModel() {
     private var _lastName: String = "Yen"
     private var _likes: Int by Delegates.observable(0) { _, _, new ->
         _popular = when {
-            new > 9 -> Popular.START
+            new > 9 -> Popular.STAR
             new > 4 -> Popular.POPULAR
             else -> Popular.NORMAL
         }
