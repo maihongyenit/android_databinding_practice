@@ -20,6 +20,7 @@ class MainFragment : Fragment() {
     ): View {
         val dataBinding = FragmentMainBinding.inflate(inflater, container, false)
         dataBinding.viewModel = viewModel
+        dataBinding.lifecycleOwner = viewLifecycleOwner
         binding = dataBinding
         return dataBinding.root
     }

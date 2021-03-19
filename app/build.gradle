@@ -56,4 +56,5 @@ dependencies {
     /* Ktx */
     implementation "androidx.activity:activity-ktx:$ktx_activity_version"
     implementation "androidx.fragment:fragment-ktx:$ktx_fragment_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$ktx_lifecycle_version"
 }
