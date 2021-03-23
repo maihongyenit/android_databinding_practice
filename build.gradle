@@ -2,13 +2,14 @@
 buildscript {
     ext.kotlin_version = "1.4.31"
     ext.hilt_version = '2.33-beta'
+    ext.gradle_plugin_version = "4.1.3"
 
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.2"
+        classpath "com.android.tools.build:gradle:$gradle_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
         // NOTE: Do not place your application dependencies here; they belong
@@ -31,4 +32,10 @@ ext {
     ktx_activity_version = "1.2.1"
     ktx_fragment_version = "1.3.1"
     ktx_lifecycle_version = "2.3.0"
+    ktx_core_version = "1.3.2"
+    ktx_appcompat_version = "1.2.0"
+    ktx_constraintlayout_version = "2.0.4"
+    ktx_recyclerview_version = "1.1.0"
+    circleimageview_version = "3.1.0"
+    glide_version = "4.12.0"
 }
