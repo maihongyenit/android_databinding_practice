@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android_databinding_practice.R
 import com.example.android_databinding_practice.databinding.ActivityMainBinding
+import com.example.android_databinding_practice.ui.product.ProductFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.run {
             fragmentFactory = this@MainActivity.fragmentFactory
             beginTransaction()
-                .replace(R.id.fragment_container, MainFragment::class.java, null)
+                .replace(R.id.fragment_container, ProductFragment::class.java, null)
                 .commit()
         }
     }
