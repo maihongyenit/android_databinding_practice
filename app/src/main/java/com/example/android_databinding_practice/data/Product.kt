@@ -13,5 +13,5 @@ data class Product(
     val serial: Int
 ) {
     val hasSale = salePrice > 0.toBigDecimal()
-    val ratingNumString = "{($ratingNum)"
+    val ratingNumString = "($ratingNum)"
 }

@@ -4,15 +4,20 @@ import androidx.lifecycle.*
 import com.example.android_databinding_practice.domain.product.CartRepo
 import com.example.android_databinding_practice.domain.product.ProductRepo
 import com.example.android_databinding_practice.ui.product.ProductFragment.Companion.PRODUCT_SERIAL
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ProductViewModel constructor(
+@HiltViewModel
+class ProductViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    productRepo: ProductRepo,
-    cartRepo: CartRepo
+    private val productRepo: ProductRepo,
+    private val cartRepo: CartRepo
 ) : ViewModel() {
-    private val _productSerial = savedStateHandle.getLiveData<Int>(PRODUCT_SERIAL)
+    private val _productSerial: LiveData<Int?> = savedStateHandle.getLiveData(PRODUCT_SERIAL, null)
     private val _quantity = MutableLiveData(cartRepo.getQuantity(_productSerial.value ?: 0))
 
-    val product = _productSerial.map { productRepo.getProduct(it) }
+    val product = _productSerial.map { serial ->
+        serial?.let { productRepo.getProduct(it) }
+    }
     val quantity: LiveData<Int> = _quantity
 }

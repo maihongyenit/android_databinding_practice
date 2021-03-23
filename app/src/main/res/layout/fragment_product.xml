@@ -24,8 +24,6 @@
             android:layout_marginEnd="8dp"
             android:isIndicator="true"
             android:numStars="5"
-            android:scaleX="1.2"
-            android:scaleY="1.2"
             android:theme="@style/RatingBar"
             app:layout_constraintEnd_toStartOf="@id/num_ratings"
             app:layout_constraintHorizontal_bias="1"
@@ -67,7 +65,7 @@
             android:layout_height="200dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:src="@{viewModel.product.image}"
+            android:src="@{viewModel.product != null ? viewModel.product.image : 0}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
@@ -116,7 +114,7 @@
                 app:layout_constraintStart_toEndOf="@+id/price"
                 app:layout_constraintTop_toTopOf="parent"
                 app:productOldPrice="@{viewModel.product}"
-                app:visible="@{viewModel.product.hasSale}"
+                app:productSaleVisible="@{viewModel.product}"
                 tool:text="100.00" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -136,12 +134,12 @@
                 android:id="@+id/quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.quantity.toString()}"
                 android:textColor="@color/Black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:productQuantity='@{viewModel.quantity}'
                 tool:text="Qty: 1" />
 
             <ImageView
