@@ -20,11 +20,6 @@ class MainFragment : Fragment() {
         ProductsAdapter(emptyList()) { mainViewModel.onItemClick(it) }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        adapter
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
