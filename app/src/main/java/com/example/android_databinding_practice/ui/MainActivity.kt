@@ -1,15 +1,12 @@
 package com.example.android_databinding_practice.ui
 
-import android.R.attr.key
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android_databinding_practice.R
 import com.example.android_databinding_practice.databinding.ActivityMainBinding
-import com.example.android_databinding_practice.ui.product.ProductFragment
-import com.example.android_databinding_practice.ui.product.ProductFragment.Companion.PRODUCT_SERIAL
+import com.example.android_databinding_practice.ui.products.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -28,8 +25,9 @@ class MainActivity : AppCompatActivity() {
             beginTransaction()
                 .replace(
                     R.id.fragment_container,
-                    ProductFragment::class.java,
-                    Bundle().apply { putInt(PRODUCT_SERIAL, 1515611) })
+                    MainFragment::class.java,
+                    null
+                )
                 .commit()
         }
     }

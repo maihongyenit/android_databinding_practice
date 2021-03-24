@@ -1,15 +1,13 @@
 package com.example.android_databinding_practice.domain.product
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.android_databinding_practice.R
 import com.example.android_databinding_practice.data.Product
 import java.math.BigDecimal
 
 class ProductRepoImpl : ProductRepo {
-    override val products: List<Product> = initProducts()
-
-    override fun getProduct(serial: Int): Product? {
-        return products.find { it.serial == serial }
-    }
+    override val products: LiveData<List<Product>> = MutableLiveData(initProducts())
 
     private fun initProducts(): List<Product> {
         val RED_LAMP = Product(

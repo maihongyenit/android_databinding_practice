@@ -1,14 +1,17 @@
-package com.example.android_databinding_practice.ui.product
+package com.example.android_databinding_practice.databinding
 
 import android.view.View
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.android_databinding_practice.adapter.ProductsAdapter
 import com.example.android_databinding_practice.data.Product
 import com.example.android_databinding_practice.extension.formatQuantity
 import com.example.android_databinding_practice.extension.getValue
 
-object ProductFragmentBindingAdapter {
+object ProductBindingAdapter {
 
     @BindingAdapter("productRatingNum")
     @JvmStatic
@@ -85,6 +88,26 @@ object ProductFragmentBindingAdapter {
         } else {
             val visible = if (product.hasSale) View.VISIBLE else View.GONE
             setVisible(v, visible)
+        }
+    }
+
+    @BindingAdapter("productList")
+    @JvmStatic
+    fun setProductList(v: RecyclerView, products: List<Product>?) {
+        // Initial
+        if (v.layoutManager == null) {
+            v.layoutManager = GridLayoutManager(v.context, 2)
+        }
+        if (v.adapter == null) {
+            v.adapter = ProductsAdapter(emptyList())
+        }
+
+        products?.let {
+            v.adapter?.let {
+                if (it is ProductsAdapter) {
+                    it.refreshList(products)
+                }
+            }
         }
     }
 }
