@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.android_databinding_practice.dialog.ChooseQuantityDialogViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="170dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/grey_rounded_background">
 
@@ -38,10 +39,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/close_btn"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:background="?attr/selectableItemBackground"
+                android:onClick="@{() -> viewModel.onCloseClick()}"
                 android:src="@drawable/ic_x_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +61,8 @@
             android:entries="@array/quantity_array"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header" />
+            app:layout_constraintTop_toBottomOf="@id/header"
+            app:onItemClickListener="@{viewModel::onItemClick}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

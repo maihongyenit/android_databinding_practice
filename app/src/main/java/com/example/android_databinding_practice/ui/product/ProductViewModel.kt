@@ -12,8 +12,10 @@ import com.bumptech.glide.request.target.Target
 import com.example.android_databinding_practice.data.Product
 import com.example.android_databinding_practice.domain.product.CartRepo
 import com.example.android_databinding_practice.domain.product.ProductRepo
+import com.example.android_databinding_practice.extension.filterNotNull
 import com.example.android_databinding_practice.extension.zip
 import com.example.android_databinding_practice.ui.product.ProductFragment.Companion.PRODUCT_SERIAL
+import com.example.android_databinding_practice.util.SingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -24,7 +26,9 @@ class ProductViewModel @Inject constructor(
     private val cartRepo: CartRepo
 ) : ViewModel() {
     private val _productSerial: LiveData<Int?> = savedStateHandle.getLiveData(PRODUCT_SERIAL, null)
+
     private val _quantity = MutableLiveData(cartRepo.getQuantity(_productSerial.value ?: 0))
+    val quantity: LiveData<Int> = _quantity
 
     val product: LiveData<Product?> = _productSerial.zip(productRepo.products) { serial, product ->
         serial?.let { s ->
@@ -35,7 +39,9 @@ class ProductViewModel @Inject constructor(
     private val _imageLoaded = MutableLiveData(false)
     val imageLoaded: LiveData<Boolean> = _imageLoaded
 
-    val quantity: LiveData<Int> = _quantity
+    private val _showQuantityDialogEvent = MutableLiveData(SingleEvent.createOrNull<Boolean>())
+    val showQuantityDialogEvent: LiveData<SingleEvent<Boolean>> =
+        _showQuantityDialogEvent.filterNotNull()
 
     val listener = object : RequestListener<Drawable> {
         override fun onLoadFailed(
@@ -57,5 +63,9 @@ class ProductViewModel @Inject constructor(
             _imageLoaded.postValue(true)
             return false
         }
+    }
+
+    fun onQuantityClick() {
+        _showQuantityDialogEvent.postValue(SingleEvent((true)))
     }
 }

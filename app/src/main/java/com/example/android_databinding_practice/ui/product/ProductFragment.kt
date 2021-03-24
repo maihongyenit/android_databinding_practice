@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.android_databinding_practice.databinding.FragmentProductBinding
+import com.example.android_databinding_practice.dialog.ChooseQuantityDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,8 +32,23 @@ class ProductFragment : Fragment() {
         return dataBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observer()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    private fun observer() {
+        viewModel.showQuantityDialogEvent.observe(viewLifecycleOwner) { event ->
+            event.getContentIfNotHandled()?.let { showDialog ->
+                if (showDialog) {
+                    ChooseQuantityDialog().show(childFragmentManager, null)
+                }
+            }
+        }
     }
 }

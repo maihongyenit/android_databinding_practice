@@ -137,6 +137,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/grey_rounded_button"
+                android:onClick="@{() -> viewModel.onQuantityClick()}"
                 android:padding="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/price_layout">
