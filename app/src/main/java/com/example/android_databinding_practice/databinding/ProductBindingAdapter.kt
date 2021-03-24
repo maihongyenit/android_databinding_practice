@@ -1,11 +1,14 @@
 package com.example.android_databinding_practice.databinding
 
+import android.graphics.drawable.Drawable
 import android.view.View
+import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.request.RequestListener
 import com.example.android_databinding_practice.adapter.ProductsAdapter
 import com.example.android_databinding_practice.data.Product
 import com.example.android_databinding_practice.extension.formatQuantity
@@ -108,6 +111,14 @@ object ProductBindingAdapter {
                     it.refreshList(products)
                 }
             }
+        }
+    }
+
+    @BindingAdapter(value = ["glideListener", "productImageResource"], requireAll = false)
+    @JvmStatic
+    fun setImageResource(img: ImageView, listener: RequestListener<Drawable>?, product: Product?) {
+        product?.let {
+            GlideBindingAdapter.setImageResource(img, listener, it.image)
         }
     }
 }

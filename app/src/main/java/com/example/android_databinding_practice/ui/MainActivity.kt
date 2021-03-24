@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         observer()
     }
 
-    fun init() {
+    private fun init() {
         supportFragmentManager.run {
             fragmentFactory = this@MainActivity.fragmentFactory
             beginTransaction()
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun observer() {
+    private fun observer() {
         viewModel.detailProductSerial.observe(this) { event ->
             event.getContentIfNotHandled()?.let { serial ->
                 supportFragmentManager.run {
