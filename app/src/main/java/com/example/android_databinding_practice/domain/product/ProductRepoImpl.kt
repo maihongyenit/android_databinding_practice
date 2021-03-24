@@ -4,10 +4,25 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.android_databinding_practice.R
 import com.example.android_databinding_practice.data.Product
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import java.math.BigDecimal
 
 class ProductRepoImpl : ProductRepo {
-    override val products: LiveData<List<Product>> = MutableLiveData(initProducts())
+    private val _products = MutableLiveData(initProducts())
+    override val products: LiveData<List<Product>> = _products
+
+    private val _isRefreshingProduct = MutableLiveData(false)
+    override val isRefreshingProduct: LiveData<Boolean> = _isRefreshingProduct
+
+    override suspend fun refreshProducts() {
+        return coroutineScope {
+            _isRefreshingProduct.postValue(true)
+            delay(1000)
+            _products.postValue(initProducts())
+            _isRefreshingProduct.postValue(false)
+        }
+    }
 
     private fun initProducts(): List<Product> {
         val RED_LAMP = Product(
@@ -191,7 +206,7 @@ class ProductRepoImpl : ProductRepo {
             BigDecimal(3.3),
             1145614
         )
-        return listOf(
+        val list = listOf(
             RED_LAMP,
             YELLOW_LAMP,
             BLUE_MUG,
@@ -213,5 +228,7 @@ class ProductRepoImpl : ProductRepo {
             HAVASU_FALLS_PICTURE,
             ICEY_COAST_PICTURE
         )
+        val randomTake = (list.size / 2..list.size).random()
+        return list.shuffled().take(randomTake)
     }
 }

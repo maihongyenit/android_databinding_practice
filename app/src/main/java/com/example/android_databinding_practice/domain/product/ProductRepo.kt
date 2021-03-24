@@ -6,4 +6,8 @@ import com.example.android_databinding_practice.data.Product
 interface ProductRepo {
 
     val products: LiveData<List<Product>>
+
+    val isRefreshingProduct: LiveData<Boolean>
+
+    suspend fun refreshProducts()
 }
