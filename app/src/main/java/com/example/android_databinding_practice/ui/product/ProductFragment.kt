@@ -1,6 +1,7 @@
 package com.example.android_databinding_practice.ui.product
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,9 +45,12 @@ class ProductFragment : Fragment() {
 
     private fun observer() {
         viewModel.showQuantityDialogEvent.observe(viewLifecycleOwner) { event ->
+            Log.d("Yen", "showQuantityDialogEvent")
             event.getContentIfNotHandled()?.let { showDialog ->
                 if (showDialog) {
-                    ChooseQuantityDialog().show(childFragmentManager, null)
+                    ChooseQuantityDialog().apply {
+                        quantityCallBack = { viewModel.onChooseQuantity(it) }
+                    }.show(childFragmentManager, null)
                 }
             }
         }

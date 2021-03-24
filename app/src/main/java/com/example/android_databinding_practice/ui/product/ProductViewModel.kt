@@ -68,4 +68,8 @@ class ProductViewModel @Inject constructor(
     fun onQuantityClick() {
         _showQuantityDialogEvent.postValue(SingleEvent((true)))
     }
+
+    fun onChooseQuantity(quantity: Int) {
+        _quantity.postValue(quantity)
+    }
 }

@@ -9,11 +9,14 @@ import androidx.fragment.app.viewModels
 import com.example.android_databinding_practice.databinding.DialogChooseQuantityBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+typealias onChooseQuantityCallback = (quantity: Int) -> Unit
+
 @AndroidEntryPoint
 class ChooseQuantityDialog : DialogFragment() {
 
     private var binding: DialogChooseQuantityBinding? = null
     private val viewModel: ChooseQuantityDialogViewModel by viewModels()
+    var quantityCallBack: onChooseQuantityCallback? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,16 +40,16 @@ class ChooseQuantityDialog : DialogFragment() {
         binding = null
     }
 
-    private fun observer(){
-        viewModel.closeEvent.observe(viewLifecycleOwner){event ->
+    private fun observer() {
+        viewModel.closeEvent.observe(viewLifecycleOwner) { event ->
             event.getContentIfNotHandled()?.let { needClose ->
                 dismiss()
             }
         }
 
-        viewModel.quantityEvent.observe(viewLifecycleOwner){event ->
+        viewModel.quantityEvent.observe(viewLifecycleOwner) { event ->
             event.getContentIfNotHandled()?.let { quantity ->
-
+                quantityCallBack?.invoke(quantity)
                 dismiss()
             }
         }
