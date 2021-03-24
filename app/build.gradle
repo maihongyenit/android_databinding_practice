@@ -58,7 +58,8 @@ dependencies {
     implementation "androidx.core:core-ktx:$ktx_core_version"
     implementation "androidx.appcompat:appcompat:$ktx_appcompat_version"
     implementation "androidx.constraintlayout:constraintlayout:$ktx_constraintlayout_version"
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout_version"
 
     /* Jetpack lifecycle */
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$ktx_lifecycle_version"
