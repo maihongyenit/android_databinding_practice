@@ -8,6 +8,10 @@
         <variable
             name="product"
             type="com.example.android_databinding_practice.data.Product" />
+
+        <variable
+            name="adapter"
+            type="com.example.android_databinding_practice.adapter.ProductsAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -117,6 +121,17 @@
             app:layout_constraintTop_toTopOf="@id/rating"
             app:productRatingNum="@{product}"
             tools:text="(20)" />
+
+        <View
+            android:id="@+id/overlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="@{() -> adapter.onClick(product)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

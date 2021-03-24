@@ -7,6 +7,10 @@
         <variable
             name="mainViewModel"
             type="com.example.android_databinding_practice.ui.MainViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.example.android_databinding_practice.adapter.ProductsAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,6 +32,7 @@
                 android:id="@+id/recyclerv_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:productAdapter="@{adapter}"
                 app:productList="@{mainViewModel.products}">
 
             </androidx.recyclerview.widget.RecyclerView>

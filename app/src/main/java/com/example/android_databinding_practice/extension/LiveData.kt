@@ -30,3 +30,13 @@ fun <L1, L2, T> LiveData<L1>.zip(
     }
     return mediatorLiveData
 }
+
+fun <X> LiveData<X?>.filterNotNull(): LiveData<X> {
+    val result = MediatorLiveData<X>()
+    result.addSource(this) { x ->
+        x?.let {
+            result.value = x
+        }
+    }
+    return result
+}

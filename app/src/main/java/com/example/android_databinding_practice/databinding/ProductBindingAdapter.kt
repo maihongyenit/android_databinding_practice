@@ -91,15 +91,15 @@ object ProductBindingAdapter {
         }
     }
 
-    @BindingAdapter("productList")
+    @BindingAdapter(value = ["productAdapter", "productList"], requireAll = true)
     @JvmStatic
-    fun setProductList(v: RecyclerView, products: List<Product>?) {
+    fun setProductList(v: RecyclerView, adapter: ProductsAdapter, products: List<Product>?) {
         // Initial
-        if (v.layoutManager == null) {
-            v.layoutManager = GridLayoutManager(v.context, 2)
-        }
-        if (v.adapter == null) {
-            v.adapter = ProductsAdapter(emptyList())
+        if (v.adapter != adapter) {
+            v.adapter = adapter
+            if (v.layoutManager == null) {
+                v.layoutManager = GridLayoutManager(v.context, 2)
+            }
         }
 
         products?.let {

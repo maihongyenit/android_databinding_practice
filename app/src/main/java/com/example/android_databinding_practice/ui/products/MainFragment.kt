@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.android_databinding_practice.adapter.ProductsAdapter
 import com.example.android_databinding_practice.databinding.FragmentMainBinding
 import com.example.android_databinding_practice.ui.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,6 +16,14 @@ class MainFragment : Fragment() {
 
     private var binding: FragmentMainBinding? = null
     private val mainViewModel: MainViewModel by activityViewModels()
+    private val adapter: ProductsAdapter by lazy {
+        ProductsAdapter(emptyList()) { mainViewModel.onItemClick(it) }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        adapter
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +32,7 @@ class MainFragment : Fragment() {
     ): View {
         val dataBinding = FragmentMainBinding.inflate(inflater, container, false)
         dataBinding.mainViewModel = mainViewModel
+        dataBinding.adapter = adapter
         dataBinding.lifecycleOwner = viewLifecycleOwner
         binding = dataBinding
         return dataBinding.root
