@@ -9,7 +9,7 @@ import kotlinx.coroutines.delay
 import java.math.BigDecimal
 
 class ProductRepoImpl : ProductRepo {
-    private val _products = MutableLiveData(initProducts())
+    private val _products = MutableLiveData(initProducts(false))
     override val products: LiveData<List<Product>> = _products
 
     private val _isRefreshingProduct = MutableLiveData(false)
@@ -19,12 +19,12 @@ class ProductRepoImpl : ProductRepo {
         return coroutineScope {
             _isRefreshingProduct.postValue(true)
             delay(1000)
-            _products.postValue(initProducts())
+            _products.postValue(initProducts(false))
             _isRefreshingProduct.postValue(false)
         }
     }
 
-    private fun initProducts(): List<Product> {
+    private fun initProducts(random: Boolean): List<Product> {
         val RED_LAMP = Product(
             "Red Lamp",
             "Red colored lamp, perfect for lighting up a room and matching any red furniture.",
@@ -228,7 +228,12 @@ class ProductRepoImpl : ProductRepo {
             HAVASU_FALLS_PICTURE,
             ICEY_COAST_PICTURE
         )
-        val randomTake = (list.size / 2..list.size).random()
-        return list.shuffled().take(randomTake)
+
+        return if (random) {
+            val randomTake = (list.size / 2..list.size).random()
+            list.shuffled().take(randomTake)
+        } else {
+            list
+        }
     }
 }
