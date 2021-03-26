@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.domain.product
+package com.example.android_databinding_practice.domain.cart
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
