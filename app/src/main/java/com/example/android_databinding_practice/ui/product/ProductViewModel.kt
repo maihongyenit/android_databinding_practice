@@ -9,7 +9,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.example.android_databinding_practice.data.Product
+import com.example.android_databinding_practice.models.Product
 import com.example.android_databinding_practice.domain.product.CartRepo
 import com.example.android_databinding_practice.domain.product.ProductRepo
 import com.example.android_databinding_practice.extension.filterNotNull

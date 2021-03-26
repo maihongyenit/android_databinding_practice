@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.data
+package com.example.android_databinding_practice.models
 
 data class CartItem(val product: Product, val quantity: Int) {
 

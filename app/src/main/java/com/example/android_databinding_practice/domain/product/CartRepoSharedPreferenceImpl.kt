@@ -2,7 +2,7 @@ package com.example.android_databinding_practice.domain.product
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.android_databinding_practice.data.CartItem
+import com.example.android_databinding_practice.models.CartItem
 
 class CartRepoSharedPreferenceImpl : CartRepo {
 

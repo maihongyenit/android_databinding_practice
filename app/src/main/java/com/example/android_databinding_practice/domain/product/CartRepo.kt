@@ -1,7 +1,7 @@
 package com.example.android_databinding_practice.domain.product
 
 import androidx.lifecycle.LiveData
-import com.example.android_databinding_practice.data.CartItem
+import com.example.android_databinding_practice.models.CartItem
 
 interface CartRepo {
 

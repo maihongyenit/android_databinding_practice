@@ -7,7 +7,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_databinding_practice.BR
 import com.example.android_databinding_practice.R
-import com.example.android_databinding_practice.data.Product
+import com.example.android_databinding_practice.models.Product
 
 typealias OnClickListener = (serial: Int) -> Unit
 

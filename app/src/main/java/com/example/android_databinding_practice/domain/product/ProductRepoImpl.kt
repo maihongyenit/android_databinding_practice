@@ -3,7 +3,7 @@ package com.example.android_databinding_practice.domain.product
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.android_databinding_practice.R
-import com.example.android_databinding_practice.data.Product
+import com.example.android_databinding_practice.models.Product
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import java.math.BigDecimal
