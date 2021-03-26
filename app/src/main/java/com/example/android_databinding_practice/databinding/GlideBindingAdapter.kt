@@ -11,9 +11,13 @@ import com.example.android_databinding_practice.R
 
 object GlideBindingAdapter {
 
-    @BindingAdapter(value =["glideListener","imageResource"], requireAll = false)
+    @BindingAdapter(value = ["glideListener", "imageResource"], requireAll = false)
     @JvmStatic
-    fun setImageResource(img: ImageView, listener: RequestListener<Drawable>?, @DrawableRes resourceId: Int) {
+    fun setImageResource(
+        img: ImageView,
+        listener: RequestListener<Drawable>?,
+        @DrawableRes resourceId: Int
+    ) {
         val option = RequestOptions()
             .placeholder(R.drawable.ic_launcher_background)
             .error(R.drawable.ic_launcher_background)

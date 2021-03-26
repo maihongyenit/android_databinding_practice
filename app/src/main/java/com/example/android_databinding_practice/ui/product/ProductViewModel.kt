@@ -9,11 +9,11 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.example.android_databinding_practice.models.Product
 import com.example.android_databinding_practice.domain.product.CartRepo
 import com.example.android_databinding_practice.domain.product.ProductRepo
 import com.example.android_databinding_practice.extension.filterNotNull
 import com.example.android_databinding_practice.extension.zip
+import com.example.android_databinding_practice.models.Product
 import com.example.android_databinding_practice.ui.product.ProductFragment.Companion.PRODUCT_SERIAL
 import com.example.android_databinding_practice.util.SingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel

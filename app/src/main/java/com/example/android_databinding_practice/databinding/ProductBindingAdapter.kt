@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.RequestListener
 import com.example.android_databinding_practice.adapter.ProductsAdapter
-import com.example.android_databinding_practice.models.Product
 import com.example.android_databinding_practice.extension.formatQuantity
 import com.example.android_databinding_practice.extension.getValue
+import com.example.android_databinding_practice.models.Product
 
 object ProductBindingAdapter {
 
