@@ -18,3 +18,11 @@ data class CartItem(val product: Product, val quantity: Int) {
         return product.hashCode()
     }
 }
+
+fun CartItem.toLocal(): CartItemLocal {
+    return CartItemLocal(this.product.serial, this.quantity)
+}
+
+fun List<CartItem>.toLocals(): List<CartItemLocal> {
+    return this.map { it.toLocal() }
+}

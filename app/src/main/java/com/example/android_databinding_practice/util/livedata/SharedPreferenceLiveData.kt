@@ -2,7 +2,9 @@ package com.example.android_databinding_practice.util.livedata
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.android_databinding_practice.util.State
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -16,7 +18,9 @@ abstract class SharedPreferenceLiveData<T>(
     private val key: String,
     private val defValue: T,
     private val scope: CoroutineScope
-) : MutableLiveData<T>() {
+) : LiveData<State<T>>() {
+
+    private var _cachedValue: T? = null
 
     protected abstract fun getPreferencesValue(
         prefs: SharedPreferences,
@@ -34,20 +38,26 @@ abstract class SharedPreferenceLiveData<T>(
         super.onActive()
         // Observers is active, get lasted value and dispatch async
         scope.launch {
-            val value = getPreferencesValue(prefs, key, defValue)
-            super.postValue(value)
+            emitLoading()
+            getPreferencesValue(prefs, key, defValue).let {
+                _cachedValue = it
+                super.postValue(State.Success(it))
+            }
         }
     }
 
-    override fun setValue(value: T) {
-        setPreferencesValue(prefs, key, value)
-        super.setValue(value)
+    fun emitLoading() {
+        super.postValue(State.Loading(_cachedValue))
     }
 
-    override fun postValue(value: T) {
+    fun setValueToPreference(newValue: T) {
         scope.launch {
-            setPreferencesValue(prefs, key, value)
-            super.postValue(value)
+            emitLoading()
+            newValue.let {
+                setPreferencesValue(prefs, key, it)
+                _cachedValue = it
+                super.postValue(State.Success(it))
+            }
         }
     }
 }
