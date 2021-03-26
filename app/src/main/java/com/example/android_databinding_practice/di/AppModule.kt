@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +22,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideSharedPreference(context: Context): SharedPreferences {
+    fun provideSharedPreference(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences("App", MODE_PRIVATE)
     }
 
@@ -34,6 +35,6 @@ object AppModule {
     @Singleton
     @Provides
     fun provideCoroutineScope(): CoroutineScope {
-        return CoroutineScope(Dispatchers.IO + SupervisorJob())
+        return CoroutineScope(Dispatchers.Default + SupervisorJob())
     }
 }
