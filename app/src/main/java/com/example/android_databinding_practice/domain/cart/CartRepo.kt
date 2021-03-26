@@ -5,9 +5,9 @@ import com.example.android_databinding_practice.models.CartItem
 
 interface CartRepo {
 
-    val carts: LiveData<Set<CartItem>>
+    val carts: LiveData<List<CartItem>>
 
-    fun addToCart(cartItem: CartItem)
+    suspend fun addToCart(cartItem: CartItem)
 
-    fun changeQuantity(cartItem: CartItem, step: Int)
+    suspend fun changeQuantity(cartItem: CartItem, step: Int)
 }
