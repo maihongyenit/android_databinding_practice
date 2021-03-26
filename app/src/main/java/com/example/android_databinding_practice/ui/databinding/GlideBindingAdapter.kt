@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.databinding
+package com.example.android_databinding_practice.ui.databinding
 
 import android.graphics.drawable.Drawable
 import android.widget.ImageView

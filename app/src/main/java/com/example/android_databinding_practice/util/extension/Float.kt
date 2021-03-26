@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.extension
+package com.example.android_databinding_practice.util.extension
 
 import kotlin.math.pow
 import kotlin.math.roundToInt

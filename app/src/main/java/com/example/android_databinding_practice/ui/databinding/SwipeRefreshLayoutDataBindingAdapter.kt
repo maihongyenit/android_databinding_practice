@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.databinding
+package com.example.android_databinding_practice.ui.databinding
 
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout

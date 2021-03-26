@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.ui.products
+package com.example.android_databinding_practice.ui.screens.products
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.android_databinding_practice.adapter.ProductsAdapter
 import com.example.android_databinding_practice.databinding.FragmentMainBinding
+import com.example.android_databinding_practice.ui.adapter.ProductsAdapter
 import com.example.android_databinding_practice.ui.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

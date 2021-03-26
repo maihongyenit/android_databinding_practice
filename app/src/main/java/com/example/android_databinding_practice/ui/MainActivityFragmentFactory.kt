@@ -2,8 +2,8 @@ package com.example.android_databinding_practice.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import com.example.android_databinding_practice.ui.product.ProductFragment
-import com.example.android_databinding_practice.ui.products.MainFragment
+import com.example.android_databinding_practice.ui.screens.product.ProductFragment
+import com.example.android_databinding_practice.ui.screens.products.MainFragment
 import javax.inject.Inject
 
 class MainActivityFragmentFactory @Inject constructor() : FragmentFactory() {

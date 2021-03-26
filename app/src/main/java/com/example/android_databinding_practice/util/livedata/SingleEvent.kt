@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.util
+package com.example.android_databinding_practice.util.livedata
 
 /**
  * Wrapper for type T indicate value type T is handle only once.

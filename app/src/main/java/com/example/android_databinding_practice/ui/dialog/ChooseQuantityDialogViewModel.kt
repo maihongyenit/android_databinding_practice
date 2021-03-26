@@ -1,12 +1,12 @@
-package com.example.android_databinding_practice.dialog
+package com.example.android_databinding_practice.ui.dialog
 
 import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.android_databinding_practice.extension.filterNotNull
-import com.example.android_databinding_practice.util.SingleEvent
+import com.example.android_databinding_practice.util.extension.filterNotNull
+import com.example.android_databinding_practice.util.livedata.SingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

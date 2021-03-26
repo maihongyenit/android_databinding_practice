@@ -5,9 +5,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android_databinding_practice.R
 import com.example.android_databinding_practice.databinding.ActivityMainBinding
-import com.example.android_databinding_practice.ui.product.ProductFragment
-import com.example.android_databinding_practice.ui.product.ProductFragment.Companion.PRODUCT_SERIAL
-import com.example.android_databinding_practice.ui.products.MainFragment
+import com.example.android_databinding_practice.ui.screens.product.ProductFragment
+import com.example.android_databinding_practice.ui.screens.product.ProductFragment.Companion.PRODUCT_SERIAL
+import com.example.android_databinding_practice.ui.screens.products.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

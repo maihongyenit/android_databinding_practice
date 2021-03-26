@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.extension
+package com.example.android_databinding_practice.util.extension
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData

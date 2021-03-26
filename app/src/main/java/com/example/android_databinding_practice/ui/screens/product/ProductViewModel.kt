@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.ui.product
+package com.example.android_databinding_practice.ui.screens.product
 
 import android.graphics.drawable.Drawable
 import androidx.lifecycle.LiveData
@@ -11,11 +11,11 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.android_databinding_practice.domain.product.CartRepo
 import com.example.android_databinding_practice.domain.product.ProductRepo
-import com.example.android_databinding_practice.extension.filterNotNull
-import com.example.android_databinding_practice.extension.zip
+import com.example.android_databinding_practice.util.extension.filterNotNull
+import com.example.android_databinding_practice.util.extension.zip
 import com.example.android_databinding_practice.models.Product
-import com.example.android_databinding_practice.ui.product.ProductFragment.Companion.PRODUCT_SERIAL
-import com.example.android_databinding_practice.util.SingleEvent
+import com.example.android_databinding_practice.ui.screens.product.ProductFragment.Companion.PRODUCT_SERIAL
+import com.example.android_databinding_practice.util.livedata.SingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -27,7 +27,7 @@ class ProductViewModel @Inject constructor(
 ) : ViewModel() {
     private val _productSerial: LiveData<Int?> = savedStateHandle.getLiveData(PRODUCT_SERIAL, null)
 
-    private val _quantity = MutableLiveData(cartRepo.getQuantity(_productSerial.value ?: 0))
+    private val _quantity = MutableLiveData(0)
     val quantity: LiveData<Int> = _quantity
 
     val product: LiveData<Product?> = _productSerial.zip(productRepo.products) { serial, product ->

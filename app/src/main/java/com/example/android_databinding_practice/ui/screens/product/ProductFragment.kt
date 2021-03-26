@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.ui.product
+package com.example.android_databinding_practice.ui.screens.product
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.android_databinding_practice.databinding.FragmentProductBinding
-import com.example.android_databinding_practice.dialog.ChooseQuantityDialog
+import com.example.android_databinding_practice.ui.dialog.ChooseQuantityDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

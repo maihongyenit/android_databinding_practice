@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android_databinding_practice.domain.product.ProductRepo
-import com.example.android_databinding_practice.extension.filterNotNull
-import com.example.android_databinding_practice.util.SingleEvent
+import com.example.android_databinding_practice.util.extension.filterNotNull
+import com.example.android_databinding_practice.util.livedata.SingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

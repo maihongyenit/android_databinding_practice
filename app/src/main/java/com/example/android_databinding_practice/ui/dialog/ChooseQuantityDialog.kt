@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.dialog
+package com.example.android_databinding_practice.ui.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater

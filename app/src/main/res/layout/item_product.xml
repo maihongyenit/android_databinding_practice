@@ -11,7 +11,7 @@
 
         <variable
             name="adapter"
-            type="com.example.android_databinding_practice.adapter.ProductsAdapter" />
+            type="com.example.android_databinding_practice.ui.adapter.ProductsAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

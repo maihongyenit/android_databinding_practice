@@ -1,4 +1,4 @@
-package com.example.android_databinding_practice.adapter
+package com.example.android_databinding_practice.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
