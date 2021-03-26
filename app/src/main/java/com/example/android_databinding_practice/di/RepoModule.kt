@@ -1,7 +1,7 @@
 package com.example.android_databinding_practice.di
 
 import com.example.android_databinding_practice.domain.product.CartRepo
-import com.example.android_databinding_practice.domain.product.CartRepoImpl
+import com.example.android_databinding_practice.domain.product.CartRepoSharedPreferenceImpl
 import com.example.android_databinding_practice.domain.product.ProductRepo
 import com.example.android_databinding_practice.domain.product.ProductRepoImpl
 import dagger.Module
@@ -17,7 +17,7 @@ object RepoModule {
     @Singleton
     @Provides
     fun provideCartRepo(): CartRepo {
-        return CartRepoImpl()
+        return CartRepoSharedPreferenceImpl()
     }
 
     @Singleton
